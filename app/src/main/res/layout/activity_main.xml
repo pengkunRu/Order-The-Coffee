@@ -26,7 +26,7 @@
         <Button
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:onClick="increment"
+            android:onClick="decrement"
             android:text="-" />
 
         <TextView
@@ -35,14 +35,14 @@
             android:layout_height="wrap_content"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
-            android:text="2"
+            android:text="0"
             android:textColor="@android:color/black"
             android:textSize="16sp" />
 
         <Button
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:onClick="decrement"
+            android:onClick="increment"
             android:text="+" />
 
     </LinearLayout>
