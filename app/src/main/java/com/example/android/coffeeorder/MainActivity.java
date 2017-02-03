@@ -20,9 +20,8 @@ public class MainActivity extends AppCompatActivity {
      */
     public void submitOrder(View view){
         int price = calculatePrice();
-        String priceMessage = "Total: $"+price;
-        priceMessage = priceMessage+"\nThank you!";
-        disPlayMessage(priceMessage);
+        String orderSummary = createOrderSummary(price);
+        disPlayMessage(orderSummary);
     }
 
     /**
@@ -47,8 +46,7 @@ public class MainActivity extends AppCompatActivity {
      * @return total price
      */
     private int calculatePrice(){
-        int price = quantity * 5;
-        return price;
+        return quantity * 5;
     }
     /**
      * This method display the given quantity value on the screen
@@ -72,5 +70,22 @@ public class MainActivity extends AppCompatActivity {
     private void disPlayMessage(String Message){
         TextView priceTextView = (TextView)findViewById(R.id.price_text_view);
         priceTextView.setText(Message);
+    }
+
+    /**
+     * This method create the Order Summary
+     *
+     * @param price of the order
+     * @return: text summary
+     */
+    private String createOrderSummary(int price){
+        String customerName = "Katherine Kuan";
+        String priceMessage = "\nTotal: $"+price;
+        priceMessage += "\nThank you!";
+
+        String orderSummary = "Name: " + customerName;
+        orderSummary += "\nQuantity: " + quantity;
+        orderSummary += priceMessage;
+        return orderSummary;
     }
 }
