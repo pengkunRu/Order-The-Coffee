@@ -3,6 +3,7 @@ package com.example.android.coffeeorder;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -19,8 +20,10 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked
      */
     public void submitOrder(View view){
+        CheckBox whippedCreamCheckBox = (CheckBox)findViewById(R.id.whipped_cream_checkbox);
+        boolean hasWhippedCream = whippedCreamCheckBox.isChecked();
         int price = calculatePrice();
-        String orderSummary = createOrderSummary(price);
+        String orderSummary = createOrderSummary(price,hasWhippedCream);
         disPlayMessage(orderSummary);
     }
 
@@ -68,14 +71,16 @@ public class MainActivity extends AppCompatActivity {
      * This method create the Order Summary
      *
      * @param price of the order
+     * @param addWhippedCream to the order
      * @return: text summary
      */
-    private String createOrderSummary(int price){
+    private String createOrderSummary(int price,boolean addWhippedCream){
         String customerName = "Katherine Kuan";
         String priceMessage = "\nTotal: $"+price;
         priceMessage += "\nThank you!";
 
         String orderSummary = "Name: " + customerName;
+        orderSummary += "\nAdd Whipped cream? "+addWhippedCream;
         orderSummary += "\nQuantity: " + quantity;
         orderSummary += priceMessage;
         return orderSummary;
