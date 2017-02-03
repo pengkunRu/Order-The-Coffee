@@ -57,19 +57,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * This method display the given quantity value on the screen
-     */
-    private void displayPrice(int number){
-        TextView priceTextView = (TextView)findViewById(R.id.price_text_view);
-        priceTextView.setText(java.text.NumberFormat.getCurrencyInstance().format(number));
-    }
-
-    /**
      * This method display the given text on the screen
      */
     private void disPlayMessage(String Message){
-        TextView priceTextView = (TextView)findViewById(R.id.price_text_view);
-        priceTextView.setText(Message);
+        TextView orderSummaryTextView = (TextView)findViewById(R.id.order_summary_text_view);
+        orderSummaryTextView.setText(Message);
     }
 
     /**
