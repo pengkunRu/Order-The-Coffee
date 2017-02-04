@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,13 +21,18 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked
      */
     public void submitOrder(View view){
+
         CheckBox whippedCreamCheckBox = (CheckBox)findViewById(R.id.whipped_cream_checkbox);
-        CheckBox chocolateCheckBox = (CheckBox) findViewById(R.id.chocolate_checkbox);
         boolean hasWhippedCream = whippedCreamCheckBox.isChecked();
+
+        CheckBox chocolateCheckBox = (CheckBox) findViewById(R.id.chocolate_checkbox);
         boolean hasChocolate = chocolateCheckBox.isChecked();
 
+        EditText nameField = (EditText) findViewById(R.id.name_field);
+        String name = nameField.getText().toString();
+
         int price = calculatePrice();
-        String orderSummary = createOrderSummary(price,hasWhippedCream,hasChocolate);
+        String orderSummary = createOrderSummary(price,hasWhippedCream,hasChocolate,name);
         disPlayMessage(orderSummary);
     }
 
@@ -78,16 +84,15 @@ public class MainActivity extends AppCompatActivity {
      * @param addChocolate to the order
      * @return: text summary
      */
-    private String createOrderSummary(int price,boolean addWhippedCream,boolean addChocolate){
-        String customerName = "Katherine Kuan";
-        String priceMessage = "\nTotal: $"+price;
-        priceMessage += "\nThank you!";
+    private String createOrderSummary(int price,boolean addWhippedCream,boolean addChocolate,
+                                      String addCustomerName){
 
-        String orderSummary = "Name: " + customerName;
+        String orderSummary = "Name: " + addCustomerName;
         orderSummary += "\nAdd Whipped cream? "+addWhippedCream;
         orderSummary += "\nAdd Chocolate? "+addChocolate;
         orderSummary += "\nQuantity: " + quantity;
-        orderSummary += priceMessage;
+        orderSummary += "\nTotal: $"+price;
+        orderSummary += "\nThank you!";
         return orderSummary;
     }
 }
